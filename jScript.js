@@ -77,7 +77,7 @@ function makeCard(mainImage){
 							'<img class="profile_pic" src="http://via.placeholder.com/50x50" width="100%">' +
 						'</div>' +
 
-						'<div class="col-xs-10 clamp author">' +
+						'<div class="col-xs-10 frame author">' +
 							'<div class="text"> author </div>' +
 							'<div class="text"> category </div>' + 
 						'</div>' +
