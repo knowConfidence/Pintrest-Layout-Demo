@@ -73,6 +73,25 @@ html, body{
     background-color: rgb(250, 250, 250);
 }
 
+.search_bar_item_left{
+	float: left;
+}
+.search_bar_item_right{
+	float: right;
+}
+.search_bar{
+	background-color: white;
+	z-index: -2;
+}
+.search_bar_field{
+	position: absolute;
+	width: 100%;
+	height: 20px;
+	background-color: lightgrey;
+	top: 10px;
+	z-index: -1;
+}
+
 .columns_container{
 }
 .card_con{
