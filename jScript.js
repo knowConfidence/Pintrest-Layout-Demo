@@ -59,10 +59,10 @@ function makeCard(mainImage){
 
 	var content = 	'<div class="col-xs-12 clamp card">' +
 
-					'<div class="col-xs-12 frame">' +
+					'<div class="col-xs-12 clamp">' +
 						'<img class="img-responsive" width="100%" src="'+ mainImage +'">' + 
 					'</div>' +
-					'<div class="col-xs-8 card_info frame text">' +  
+					'<div class="col-xs-8 frame card_info text">' +  
 						'<div class="card_title"> card name </div>' +
 						'<div class="card_source"> source </div>' +
 					'</div>' + 
@@ -77,9 +77,9 @@ function makeCard(mainImage){
 							'<img class="profile_pic" src="http://via.placeholder.com/50x50" width="100%">' +
 						'</div>' +
 
-						'<div class="col-xs-10 frame author">' +
-							'<div class="text"> author </div>' +
-							'<div class="text"> category </div>' + 
+						'<div class="col-xs-10 frame text author">' +
+							'<div> author </div>' +
+							'<div> category </div>' + 
 						'</div>' +
 					'</div>' +
 

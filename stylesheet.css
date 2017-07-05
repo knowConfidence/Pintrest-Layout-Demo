@@ -50,19 +50,19 @@
 }
 
 @media only screen and (max-width:400px){
+    .title{font-size:50%;}
+    .subtitle{font-size: 40%;}
+    .text{font-size: 30%;}
+}
+@media only screen and (max-width:800px){
     .title{font-size:60%;}
     .subtitle{font-size: 50%;}
     .text{font-size: 40%;}
 }
-@media only screen and (max-width:800px){
-    .title{font-size:70%;}
-    .subtitle{font-size: 60%;}
-    .text{font-size: 50%;}
-}
 @media only screen and (min-width:1100px){
-    .title{font-size:90%;}
-    .subtitle{font-size: 80%;}
-    .text{font-size: 70%;}
+    .title{font-size:100%;}
+    .subtitle{font-size: 90%;}
+    .text{font-size: 80%;}
     /*.wrap{max-width:770px;}*/
 }
 
