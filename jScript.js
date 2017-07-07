@@ -32,7 +32,13 @@ function makeColumns(card, sWidth){
 			}
 			for(j = 0; j < count; j++){
 
-				$(".column_"+colCount).append(makeCard(actual_JSON[j].mainImg));
+				$(".column_"+colCount).append(makeCard(actual_JSON[j].mainImg,
+													   actual_JSON[j].cardName,
+													   actual_JSON[j].source,
+													   actual_JSON[j].author,
+													   actual_JSON[j].catrgory,
+													   actual_JSON[j].pins,
+													   actual_JSON[j].likes));
 
 				colCount+=1;
 				if(colCount >= 3){ colCount = 0; }
@@ -45,7 +51,13 @@ function makeColumns(card, sWidth){
 			}
 			for(j = 0; j < count; j++){
 
-				$(".column_"+colCount).append(makeCard(actual_JSON[j].mainImg));
+				$(".column_"+colCount).append(makeCard(actual_JSON[j].mainImg,
+													   actual_JSON[j].cardName,
+													   actual_JSON[j].source,
+													   actual_JSON[j].author,
+													   actual_JSON[j].category,
+													   actual_JSON[j].pins,
+													   actual_JSON[j].likes));
 
 				colCount+=1;
 				if(colCount >= 5){ colCount = 0; }
@@ -55,7 +67,7 @@ function makeColumns(card, sWidth){
 	});
 }
 
-function makeCard(mainImage){
+function makeCard(mainImage, cardName, source, author, cat, pins, likes){
 
 	var content = 	'<div class="col-xs-12 clamp card">' +
 
@@ -63,13 +75,13 @@ function makeCard(mainImage){
 						'<img class="img-responsive" width="100%" src="'+ mainImage +'">' + 
 					'</div>' +
 					'<div class="col-xs-8 frame card_info text">' +  
-						'<div class="card_title"> card name </div>' +
-						'<div class="card_source"> source </div>' +
+						'<div class="card_title"> '+ cardName +' </div>' +
+						'<div class="card_source"> '+ source +' </div>' +
 					'</div>' + 
 
 					'<div class="col-xs-4 frame text">' +   
-						'<div class="stats likes">l</div>' +  
-						'<div class="stats pins">p</div>' +
+						'<div class="stats likes">'+ likes +'</div>' +  
+						'<div class="stats pins">' + pins + '</div>' +
 					'</div>' +
 
 					'<div class="col-xs-12 frame card_profile">' +
@@ -78,8 +90,8 @@ function makeCard(mainImage){
 						'</div>' +
 
 						'<div class="col-xs-10 frame text author">' +
-							'<div> author </div>' +
-							'<div> category </div>' + 
+							'<div> '+ author +' </div>' +
+							'<div> '+ cat +' </div>' + 
 						'</div>' +
 					'</div>' +
 

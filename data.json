@@ -1,7 +1,7 @@
 [{
 	"mainImg"	: "images/bezaliel angel of shadow.jpg",
 	"cardName"	: "Bezaliel - angel of shadow", 
-	"profileImg": "",
+	"source"	: "Google images",
 	"author"	: "Peter Mohrbacher",
 	"category"	: "Concept",
 	"pins"		: 343,
@@ -10,7 +10,7 @@
 {
 	"mainImg"	: "images/angelarium.jpg",
 	"cardName"	: "Angelarium: Book of Emaneti", 
-	"profileImg": "",
+	"source"	: "Google images",
 	"author"	: "Hoàng Sơn",
 	"category"	: "Concept",
 	"pins"		: 231,
@@ -19,7 +19,7 @@
 {
 	"mainImg"	: "images/Orc concept.jpg",
 	"cardName"	: "Orc concept", 
-	"profileImg": "",
+	"source"	: "Google images",
 	"author"	: "ATEC",
 	"category"	: "Concept",
 	"pins"		: 114,
@@ -28,7 +28,7 @@
 {
 	"mainImg"	: "images/Great Glacier.jpg",
 	"cardName"	: "Great Glacier", 
-	"profileImg": "",
+	"source"	: "Google images",
 	"author"	: "Jorden Grimmer",
 	"category"	: "Concept",
 	"pins"		: 46,
@@ -37,7 +37,7 @@
 {
 	"mainImg"	: "images/Enchanted.jpg",
 	"cardName"	: "Enchanted Forest", 
-	"profileImg": "",
+	"source"	: "Google images",
 	"author"	: "Gerezon",
 	"category"	: "Concept",
 	"pins"		: 675,
@@ -46,7 +46,7 @@
 {
 	"mainImg"	: "images/grand chains.jpg",
 	"cardName"	: "Grand Chains", 
-	"profileImg": "",
+	"source"	: "Google images",
 	"author"	: "Ling Xiang",
 	"category"	: "Concept",
 	"pins"		: 250,
@@ -55,7 +55,7 @@
 {
 	"mainImg"	: "images/Space Marine.jpg",
 	"cardName"	: "Space Marine", 
-	"profileImg": "",
+	"source"	: "Google images",
 	"author"	: "Shuohan zhou",
 	"category"	: "Concept",
 	"pins"		: 114,
@@ -64,7 +64,7 @@
 {
 	"mainImg"	: "images/Space Engineer.jpg",
 	"cardName"	: "Space Engineer", 
-	"profileImg": "",
+	"source"	: "Google images",
 	"author"	: "Fred Augis",
 	"category"	: "Concept",
 	"pins"		: 67,
@@ -73,7 +73,7 @@
 {
 	"mainImg"	: "images/The Rouge.jpg",
 	"cardName"	: "The Rouge", 
-	"profileImg": "",
+	"source"	: "Google images",
 	"author"	: "Brink",
 	"category"	: "Concept",
 	"pins"		: 88,
@@ -82,7 +82,7 @@
 {
 	"mainImg"	: "images/Viking Concepts.jpg",
 	"cardName"	: "Viking Designs", 
-	"profileImg": "",
+	"source"	: "Google images",
 	"author"	: "Sega",
 	"category"	: "Concept",
 	"pins"		: 43,
