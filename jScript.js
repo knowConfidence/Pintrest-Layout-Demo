@@ -1,115 +1,140 @@
 $(document).ready(function(){
 
-	var card = "<div class='col-xs-4 col-sm-2 frame card_con'>"+
-			   		"<div class='col-xs-12 clamp cards'></div>"+
-			   "</div>";
-
-	$(".card_con").remove();
-	makeColumns(card, $(window).width());
-
+	getData("data.json");
 
 	$(window).resize(function(){
 
-		$(".card_con").remove();
+		getData("data.json");
 
-		makeColumns(card, $(window).width());
 	});
+
 });
 
-function makeColumns(card, sWidth){
 
-	loadJSON(function(response) {
-	    // Parse JSON string into object
-		actual_JSON = JSON.parse(response);
-		var count = actual_JSON.length;
+function getData(file){
 
-		var colCount = 0;
-	
-		if(sWidth < 450){
-			for(i = 0; i < 3; i++){
-				$(".columns_container").append(card);
-				$(".card_con").find(".cards").eq(i).addClass("column_"+i);
-			}
-			for(j = 0; j < count; j++){
-
-				$(".column_"+colCount).append(makeCard(actual_JSON[j].mainImg,
-													   actual_JSON[j].cardName,
-													   actual_JSON[j].source,
-													   actual_JSON[j].author,
-													   actual_JSON[j].catrgory,
-													   actual_JSON[j].pins,
-													   actual_JSON[j].likes));
-
-				colCount+=1;
-				if(colCount >= 3){ colCount = 0; }
-			}
+	$.ajax({
+		type: 'GET',
+		url: file,
+		contentType: 'application/json',
+		dataType: 'json',
+		success: function(json){
+			make(json);
+		},
+		error: function(e){
+			alert('error');
 		}
-		else{
-			for(i = 0; i < 5; i++){
-				$(".columns_container").append(card);
-				$(".card_con").find(".cards").eq(i).addClass("column_"+i);
-			}
-			for(j = 0; j < count; j++){
-
-				$(".column_"+colCount).append(makeCard(actual_JSON[j].mainImg,
-													   actual_JSON[j].cardName,
-													   actual_JSON[j].source,
-													   actual_JSON[j].author,
-													   actual_JSON[j].category,
-													   actual_JSON[j].pins,
-													   actual_JSON[j].likes));
-
-				colCount+=1;
-				if(colCount >= 5){ colCount = 0; }
-			}
-		}
-
 	});
 }
 
-function makeCard(mainImage, cardName, source, author, cat, pins, likes){
+function addColumn(column, columnContainer, colCount){
 
-	var content = 	'<div class="col-xs-12 clamp card">' +
+	for (i = 0; i < colCount; i++){
+		var c;
 
-					'<div class="col-xs-12 clamp">' +
-						'<img class="img-responsive" width="100%" src="'+ mainImage +'">' + 
-					'</div>' +
-					'<div class="col-xs-8 frame card_info text">' +  
-						'<div class="card_title"> '+ cardName +' </div>' +
-						'<div class="card_source"> '+ source +' </div>' +
-					'</div>' + 
-
-					'<div class="col-xs-4 frame text">' +   
-						'<div class="stats likes">'+ likes +'</div>' +  
-						'<div class="stats pins">' + pins + '</div>' +
-					'</div>' +
-
-					'<div class="col-xs-12 frame card_profile">' +
-						'<div class="col-xs-2 clamp">' +
-							'<img class="profile_pic" src="http://via.placeholder.com/50x50" width="100%">' +
-						'</div>' +
-
-						'<div class="col-xs-10 frame text author">' +
-							'<div> '+ author +' </div>' +
-							'<div> '+ cat +' </div>' + 
-						'</div>' +
-					'</div>' +
-
-					'</div>';
-
-	return content;
+		c = column.clone();
+		c.css("display", "inline");
+		c.addClass("c"+ i);
+		c.addClass("made");
+		c.removeClass("col");
+		columnContainer.append(c);
+	}
 }
 
-function loadJSON(callback) {   
+function addCard(cardCount, noCols, jsonData){
 
-    var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'data.json', true); // Replace 'my_data' with the path to your file
-    xobj.onreadystatechange = function () {
-          if (xobj.readyState == 4 && xobj.status == "200") {
-            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-            callback(xobj.responseText);
-          }
-    };
-    xobj.send(null);  
- }
+	var colCount = 0;
+	for (i = 0; i < cardCount; i++){
+
+		if(colCount > noCols-1){
+			colCount = 0;	
+		}
+
+		var card = $(".c");
+
+		var cl = card.clone();
+		//cl.css("display", "inline");
+		cl.removeClass("c");
+
+		addContent(jsonData, cl, i);
+
+		$(".c"+colCount).append(cl);
+
+		colCount++;
+	}
+}
+
+function addContent(jsonData, card, cardID){
+
+	var img = card.find(".card_main_image").find("#mi");
+	var name = card.find(".card_name");
+	var source = card.find(".card_source");
+	var author = card.find(".card_profile_author");
+	var category = card.find(".card_profile_category");
+	var pins = card.find(".card_stats_pins");
+	var likes = card.find(".card_stats_likes");
+
+	img.attr("src", jsonData[cardID].mainImg);
+	name.append(jsonData[cardID].cardName);
+	source.append(jsonData[cardID].source);
+	author.append(jsonData[cardID].author);
+	category.append(jsonData[cardID].category);
+	pins.append(jsonData[cardID].pins);
+	likes.append(jsonData[cardID].likes);
+}
+
+function make(jsonData){
+
+	$(".made").remove();
+
+	var colsWrapper = $(".columns_wrapper");
+	var col = $(".col");
+	var length = jsonData.length;
+
+	var s_width = $(window).width();
+
+	$(".logo_text").css("display", "inline");
+
+	if(s_width < 450){
+
+		addColumn(col, colsWrapper, 2);
+
+		addCard(length, 2, jsonData);
+
+		$(".logo_text").css("display", "none");
+	}
+	else if (s_width < 800){
+
+		addColumn(col, colsWrapper, 4);		
+
+		addCard(length, 4, jsonData);
+	}
+	else{
+
+		addColumn(col, colsWrapper, 6);
+
+		addCard(length, 6, jsonData);
+	}
+
+	var el = $('.card');
+
+	el.mouseenter(function(){
+		showOverlay($(this));
+	}).mouseleave(function(){
+		hideOverlay($(this))
+	});
+}
+
+function showOverlay(card){
+	card.css('background-color', 'rgba(220, 220, 220, 1)');
+	card.find(".download_save").css("display", "inline");
+	card.find(".source_more").css("display", "inline");
+
+	console.log(card.find(".card_source").html());
+}
+
+function hideOverlay(card){
+	card.css("background-color", "white");
+	card.find(".download_save").css("display", "none");
+	card.find(".source_more").css("display", "none");
+}
