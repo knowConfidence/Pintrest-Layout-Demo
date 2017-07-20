@@ -1,16 +1,23 @@
 $(document).ready(function(){
 
+	var width = $(window).width();
+
 	getData("data.json");
 
 	$(window).resize(function(){
 
-		getData("data.json");
+		var newWidth = $(window).width();
+
+		if(newWidth != width){
+			width = newWidth;
+			getData("data.json");
+		}
 
 	});
 
 });
 
-
+//request json file from server
 function getData(file){
 
 	$.ajax({
@@ -85,20 +92,26 @@ function addContent(jsonData, card, cardID){
 
 function make(jsonData){
 
+	//remove all made columns
 	$(".made").remove();
 
 	var colsWrapper = $(".columns_wrapper");
 	var col = $(".col");
+
+	//get number of json objects
 	var length = jsonData.length;
 
+	//get window width
 	var s_width = $(window).width();
 
 	$(".logo_text").css("display", "inline");
 
 	if(s_width < 450){
 
+		//make columns
 		addColumn(col, colsWrapper, 2);
 
+		//add cards to columns
 		addCard(length, 2, jsonData);
 
 		$(".logo_text").css("display", "none");
@@ -116,8 +129,10 @@ function make(jsonData){
 		addCard(length, 6, jsonData);
 	}
 
+	//get card elements
 	var el = $('.card');
 
+	//on mouseover/mouseexit hide or show card overlay
 	el.mouseenter(function(){
 		showOverlay($(this));
 	}).mouseleave(function(){
@@ -125,14 +140,13 @@ function make(jsonData){
 	});
 }
 
+//show overlay
 function showOverlay(card){
 	card.css('background-color', 'rgba(220, 220, 220, 1)');
 	card.find(".download_save").css("display", "inline");
 	card.find(".source_more").css("display", "inline");
-
-	console.log(card.find(".card_source").html());
 }
-
+//hide overlay
 function hideOverlay(card){
 	card.css("background-color", "white");
 	card.find(".download_save").css("display", "none");
